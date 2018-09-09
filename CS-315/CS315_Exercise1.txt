@@ -1,0 +1,17 @@
+1.)
+public double calcDistanceBetweenFirstAndLast() {
+    
+    Point3D firstValue = points[0];
+    Point3D lastValue = points[points.size()];
+
+    return(firstValue.calcDistanceBetweenPoints(lastValue)); 
+}
+
+2.)
+public Complex sumOfNumbers() {
+    for(int i = 0; i < numbers.size(); i++) {
+        Complex num = num.add(numbers.get(i));
+    }
+
+    return num;
+}
