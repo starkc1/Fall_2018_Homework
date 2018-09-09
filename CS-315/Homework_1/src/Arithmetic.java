@@ -4,7 +4,6 @@ Assignment: HomeWork 1
 Class: CS 315
 */
 import java.util.Scanner;
-import java.util.concurrent.CompletionException;
 
 public class Arithmetic {
 
