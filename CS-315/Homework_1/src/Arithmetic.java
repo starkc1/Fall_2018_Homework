@@ -32,14 +32,13 @@ public class Arithmetic {
         //double[] secondValue = arithmetic.AssignValues(temp);
 
 
-        arithmetic.printString("Please Enter An Operation You Would Like To Preform. (Add, Subtract, Multiple, Divide, Absolute Value):");
+        arithmetic.printString("Please Enter An Operation You Would Like To Preform. (Add, Subtract, Multiply, Divide, Absolute):");
         String operationType = reader.nextLine();
 
         reader.close();
 
         arithmetic.PreformOperation(firstValue, secondValue, operationType);
     }
-
 
 
     public void printString(String text) {
@@ -59,60 +58,62 @@ public class Arithmetic {
             case "Add":
                 //printString("Add");
                 tempArray = FirstValue.split(" ");
-                firstNumber = TestFirstValue(tempArray);
+                firstNumber = TestAssignValue(tempArray);
 
                 tempArray = SecondValue.split(" ");
-                secondNumber = TestSecondValue(tempArray);
-
+                secondNumber = TestAssignValue(tempArray);
 
                 printString(firstNumber.Add(secondNumber));
                 break;
 
             case "Subtract":
                 tempArray = FirstValue.split(" ");
-                firstNumber = TestFirstValue(tempArray);
+                firstNumber = TestAssignValue(tempArray);
 
                 tempArray = SecondValue.split(" ");
-                secondNumber = TestSecondValue(tempArray);
+                secondNumber = TestAssignValue(tempArray);
 
                 printString(firstNumber.Subtract(secondNumber));
                 break;
 
             case "Multiply":
                 tempArray = FirstValue.split(" ");
-                firstNumber = TestFirstValue(tempArray);
+                firstNumber = TestAssignValue(tempArray);
 
                 tempArray = SecondValue.split(" ");
-                secondNumber = TestSecondValue(tempArray);
+                secondNumber = TestAssignValue(tempArray);
 
                 printString(firstNumber.Multiply(secondNumber));
+                break;
+
+            case "Divide":
+                tempArray = FirstValue.split(" ");
+                firstNumber = TestAssignValue(tempArray);
+
+                tempArray = SecondValue.split(" ");
+                secondNumber = TestAssignValue(tempArray);
+
+                printString(firstNumber.Divide(secondNumber));
+                break;
+
+            case "Absolute":
+
 
         }
     }
 
-    public Complex TestFirstValue(String[] tempArray) {
-        Complex firstNumber = new Complex();
+    public Complex TestAssignValue(String[] tempArray) {
+        Complex value = null;
 
-        if (tempArray[0] == "R" || tempArray[0] == "r") {
-            firstNumber = new Real();
-        } else if (tempArray[0].equals("C") || tempArray[0].equals("c")) {
-            firstNumber = new Complex(Double.parseDouble(tempArray[1]), Double.parseDouble(tempArray[2]));
+        if (tempArray[0].equals("R") || tempArray[0].equals("r")) {
+            value = new Real(Double.parseDouble(tempArray[1]));
+        } else if (tempArray[0].equals("C") || tempArray.equals("c")) {
+            value = new Complex(Double.parseDouble(tempArray[1]), Double.parseDouble(tempArray[2]));
         }
 
-        return firstNumber;
+        return value;
     }
 
-    public Complex TestSecondValue(String[] tempArray) {
-        Complex secondNumber = new Complex();
-
-        if (tempArray[0] == "R" || tempArray[0] == "r") {
-            secondNumber = new Real();
-        } else if (tempArray[0].equals("C") || tempArray[0].equals("c")) {
-            secondNumber = new Complex(Double.parseDouble(tempArray[1]), Double.parseDouble(tempArray[2]));
-        }
-
-        return secondNumber;
-    }
 
 
 }

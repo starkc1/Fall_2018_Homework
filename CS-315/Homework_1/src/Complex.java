@@ -31,7 +31,7 @@ public class Complex {
         this.firstValue = Double.toString(this.a + Value.a);
         this.secondValue = Double.toString(this.b + Value.b);
 
-        result = toString();
+        result = "(" + this.a + " + " + this.b + "i)" + " + " + "(" + Value.a + " + " + Value.b + "i)" + " = " + toString();
 
         return result;
     }

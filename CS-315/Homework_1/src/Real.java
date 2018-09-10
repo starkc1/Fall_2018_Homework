@@ -17,9 +17,48 @@ public class Real extends Complex {
 
     @Override
     public String toString() {
-        return(this.firstValue);
+        return(this.firstValue + " + " + this.secondValue + "i");
     }
 
+    public String Add(Real Value) {
+         String result;
+
+         this.firstValue = Double.toString(this.a + Value.a);
+
+         result = toString();
+
+         return result;
+    }
+
+    public String Subtract(Real Value) {
+        String result;
+
+        this.firstValue = Double.toString(this.a - Value.a);
+
+        result = toString();
+
+        return result;
+    }
+
+    public String Multiply(Real Value) {
+        String result;
+
+        this.firstValue = Double.toString(this.a * Value.a);
+
+        result = toString();
+
+        return result;
+    }
+
+    public String Divide(Real Value) {
+        String result;
+
+        this.firstValue = Double.toString(this.a / Value.a);
+
+        result = toString();
+
+        return result;
+    }
 
 
 }
