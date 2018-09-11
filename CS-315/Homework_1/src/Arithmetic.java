@@ -3,6 +3,7 @@ Author: Cameron Stark
 Assignment: HomeWork 1
 Class: CS 315
 */
+
 import java.util.Scanner;
 
 public class Arithmetic {
@@ -54,7 +55,7 @@ public class Arithmetic {
                 tempArray = FirstValue.split(" "); //split the first inputted value along the white spaces
                 firstNumber = TestAssignValue(tempArray); //test whether the input is real or complex and create respected object
 
-                tempArray = SecondValue.split(" "); //
+                tempArray = SecondValue.split(" "); //Split the second inputted value along the white spaces
                 secondNumber = TestAssignValue(tempArray);
 
                 printString(firstNumber.Add(secondNumber));
