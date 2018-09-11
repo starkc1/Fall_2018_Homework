@@ -11,16 +11,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49546182">
+    <splitter split-orientation="horizontal" split-proportion="0.78857446">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.5945652">
+        <splitter split-orientation="vertical" split-proportion="0.110869564">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="Real.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/Real.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="289">
-                      <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+                    <state relative-caret-position="321">
+                      <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
                       <folding>
                         <element signature="e#0#1090#0" expanded="true" />
                         <element signature="e#121#122#0" expanded="true" />
@@ -39,14 +39,14 @@
               <file leaf-file-name="Arithmetic.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/Arithmetic.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1734">
-                      <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="29" />
+                    <state relative-caret-position="493">
+                      <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
                       <folding>
-                        <element signature="e#0#3412#0" expanded="true" />
-                        <element signature="e#1205#1206#0" expanded="true" />
-                        <element signature="e#1245#1246#0" expanded="true" />
-                        <element signature="e#1291#1292#0" expanded="true" />
-                        <element signature="e#1331#1332#0" expanded="true" />
+                        <element signature="e#0#4140#0" expanded="true" />
+                        <element signature="e#1249#1250#0" expanded="true" />
+                        <element signature="e#1327#1328#0" expanded="true" />
+                        <element signature="e#1373#1374#0" expanded="true" />
+                        <element signature="e#1451#1452#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -61,10 +61,10 @@
           <file leaf-file-name="Complex.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Complex.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="918">
-                  <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+                <state relative-caret-position="651">
+                  <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
                   <folding>
-                    <element signature="e#0#1950#0" expanded="true" />
+                    <element signature="e#0#2261#0" expanded="true" />
                     <element signature="e#215#216#0" expanded="true" />
                     <element signature="e#240#241#0" expanded="true" />
                     <element signature="e#374#375#0" expanded="true" />
@@ -289,12 +289,12 @@
       <option name="presentableId" value="Default" />
       <updated>1536092656122</updated>
       <workItem from="1536092660581" duration="17534000" />
-      <workItem from="1536420565427" duration="20440000" />
+      <workItem from="1536420565427" duration="25739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37974000" />
+    <option name="totallyTimeSpent" value="43273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="266" y="64" width="2110" height="1293" extended-state="0" />
@@ -349,8 +349,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Real.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="321">
+          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <element signature="e#0#1090#0" expanded="true" />
             <element signature="e#121#122#0" expanded="true" />
@@ -361,30 +361,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Arithmetic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#3412#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1245#1246#0" expanded="true" />
-            <element signature="e#1291#1292#0" expanded="true" />
-            <element signature="e#1331#1332#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Complex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="651">
+          <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
           <folding>
-            <element signature="e#0#1950#0" expanded="true" />
+            <element signature="e#0#2261#0" expanded="true" />
             <element signature="e#215#216#0" expanded="true" />
             <element signature="e#240#241#0" expanded="true" />
             <element signature="e#374#375#0" expanded="true" />
             <element signature="e#447#448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Arithmetic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#4140#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1451#1452#0" expanded="true" />
           </folding>
         </state>
       </provider>

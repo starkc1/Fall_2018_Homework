@@ -42,7 +42,7 @@ public class Complex {
         this.firstValue = Double.toString(this.a - Value.a);
         this.secondValue = Double.toString(this.b - Value.b);
 
-        result = toString();
+        result = "(" + this.a + " - " + this.b + "i)" + " + " + "(" + Value.a + " + " + Value.b + "i)" + " = " + toString();
 
         return result;
     }
@@ -53,7 +53,7 @@ public class Complex {
         this.firstValue = Double.toString((this.a * Value.a) - (this.b * Value.b));
         this.secondValue = Double.toString((this.b * Value.a) + (this.a * Value.b));
 
-        result = toString();
+        result = "(" + this.a + " + " + this.b + "i)" + " * " + "(" + Value.a + " + " + Value.b + "i)" + " = " + toString();
 
         return result;
     }
@@ -64,7 +64,7 @@ public class Complex {
         this.firstValue = Double.toString(((this.a * Value.a) + (this.b * Value.b)) / ((Value.a * Value.a) + (Value.b * Value.b)));
         this.secondValue = Double.toString(((this.b * Value.a) - (this.a * Value.b)) / ((Value.a * Value.a) + (Value.b * Value.b)));
 
-        result = toString();
+        result = "(" + this.a + " + " + this.b + "i)" + " / " + "(" + Value.a + " + " + Value.b + "i)" + " = " + toString();
 
         return result;
     }
@@ -75,7 +75,7 @@ public class Complex {
 
         this.firstValue = Double.toString(Math.sqrt( (this.a * this.a) + (this.b * this.b) ));
 
-        result = this.firstValue;
+        result = "|"+ this.a + "| = " + this.firstValue;
 
         return result;
 
