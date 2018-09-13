@@ -41,7 +41,7 @@ public class Real extends Complex {
     public Real Multiply(Complex Value) {
         return(
             new Real(
-                (this.a * this.b)
+                (this.a * Value.a)
             )
         );
     }
@@ -53,7 +53,7 @@ public class Real extends Complex {
 
         return(
             new Real(
-                (this.a / this.b)
+                (this.a / Value.a)
             )
         );
     }

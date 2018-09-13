@@ -57,6 +57,10 @@ public class Complex {
     }
 
     public Complex Divide(Complex Value) {
+
+        if (this.a == 0 & this.b == 0) {
+            return null;
+        }
         return(
             new Complex(
                 (
