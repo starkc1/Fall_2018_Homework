@@ -5,14 +5,14 @@
     File: Complex.java
 */
 
-public class Real extends Complex {
+public class Real extends Complex { //creates the real which is an extension of the complex class
 
-    public Real() {
+    public Real() { //creates a default real class with both values set to 0
         this.a = 0;
         this.b = 0;
     }
 
-    public Real(double newA) {
+    public Real(double newA) { //creates a real value with a set to the request and b set to 0
         this.a = newA;
         this.b = 0;
     }
@@ -22,7 +22,7 @@ public class Real extends Complex {
         return("(" + this.a + ")");
     }
 
-    public Real Add(Complex Value) {
+    public Real Add(Complex Value) { //add method for adding the real values
         return(
             new Real(
                 (this.a + Value.a)
@@ -30,7 +30,7 @@ public class Real extends Complex {
         );
     }
 
-    public Real Subtract(Complex Value) {
+    public Real Subtract(Complex Value) { //subtract method for subtracting the real values
         return(
             new Real(
                 (this.a + Value.a)
@@ -38,7 +38,7 @@ public class Real extends Complex {
         );
     }
 
-    public Real Multiply(Complex Value) {
+    public Real Multiply(Complex Value) { //multiply method for multiplying the real values
         return(
             new Real(
                 (this.a * this.b)
@@ -46,7 +46,7 @@ public class Real extends Complex {
         );
     }
 
-    public Real Divide(Complex Value) {
+    public Real Divide(Complex Value) { //divide method for diving the real values
         if (Value.a == 0) {
             return null;
         }

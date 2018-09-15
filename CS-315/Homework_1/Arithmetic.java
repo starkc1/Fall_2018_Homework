@@ -12,11 +12,11 @@ public class Arithmetic {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Complex FirstValue = getUserValue(scanner, "First");
-        Complex SecondValue = getUserValue(scanner, "Second");
-        String Operation = getUserOperation(scanner);
+        Complex FirstValue = getUserValue(scanner, "First"); //Gets The first inputed value
+        Complex SecondValue = getUserValue(scanner, "Second"); //Gets the second inputted value
+        String Operation = getUserOperation(scanner); //gets the requested operation
 
-        performOperation(FirstValue, SecondValue, Operation);
+        performOperation(FirstValue, SecondValue, Operation); //performs operation on the two values
         scanner.close();
 
     }
@@ -32,7 +32,7 @@ public class Arithmetic {
 
         String[] userInputs = scanner.nextLine().split(" ");
         
-        switch (userInputs[0]) {
+        switch (userInputs[0]) { //Based on whether the user put an R or an C it creates a real or complex value
             case "R":
                 number = new Real(Double.parseDouble(userInputs[1]));
                 break;
@@ -48,7 +48,7 @@ public class Arithmetic {
 
         printString("Enter the operation you would like to preform. (A, S, M, D, ABS)");
 
-        String[] operation = scanner.nextLine().split(" ");
+        String[] operation = scanner.nextLine().split(" "); //takes the inputted value and creates an array of the values
 
         return operation[0].toUpperCase();
     }
@@ -57,16 +57,16 @@ public class Arithmetic {
 
         switch (operation) {
             case "A":
-                printString(firstValue + " + " + secondValue + " = " + firstValue.Add(secondValue));
+                printString(firstValue + " + " + secondValue + " = " + firstValue.Add(secondValue)); //if the user chose add
                 break;
             case "S":
-                printString(firstValue + " - " + secondValue + " = " + firstValue.Subtract(secondValue));
+                printString(firstValue + " - " + secondValue + " = " + firstValue.Subtract(secondValue)); //if the user chose subtract
                 break;
             case "M":
-                printString(firstValue + " * " + secondValue + " = " + firstValue.Multiply(secondValue));
+                printString(firstValue + " * " + secondValue + " = " + firstValue.Multiply(secondValue)); //if the user choose multiply
                 break;
             case "D":
-                printString(firstValue + " / " + secondValue + " = " + firstValue.Divide(secondValue));
+                printString(firstValue + " / " + secondValue + " = " + firstValue.Divide(secondValue)); //if the user choose
                 break;
             case "ABS":
                 printString("|" + firstValue + "| = " + firstValue.Abs());

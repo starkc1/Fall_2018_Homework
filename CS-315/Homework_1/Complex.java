@@ -25,7 +25,7 @@ public class Complex {
         return("(" + this.a + " + " + this.b + "i)");
     }
 
-    public Complex Add(Complex Value) {
+    public Complex Add(Complex Value) { //adds the complex values
         return(
             new Complex(
                 (this.a + Value.a),
@@ -34,7 +34,7 @@ public class Complex {
         );
     }
 
-    public Complex Subtract(Complex Value) {
+    public Complex Subtract(Complex Value) { //subtracts the complex values
         return(
             new Complex(
                 (this.a - Value.a),
@@ -43,7 +43,7 @@ public class Complex {
         );
     }
 
-    public Complex Multiply(Complex Value) {
+    public Complex Multiply(Complex Value) { //multiply values the complex values
         return(
             new Complex(
                 (
@@ -56,7 +56,7 @@ public class Complex {
         );
     }
 
-    public Complex Divide(Complex Value) {
+    public Complex Divide(Complex Value) { //divide values for division values
         return(
             new Complex(
                 (
