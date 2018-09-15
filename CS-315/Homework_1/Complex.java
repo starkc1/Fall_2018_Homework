@@ -56,7 +56,15 @@ public class Complex {
         );
     }
 
+<<<<<<< HEAD
     public Complex Divide(Complex Value) { //divide values for division values
+=======
+    public Complex Divide(Complex Value) {
+
+        if (this.a == 0 & this.b == 0) {
+            return null;
+        }
+>>>>>>> e928d0dabec8bf17f699e15ab9f97a863b940b07
         return(
             new Complex(
                 (
