@@ -33,9 +33,13 @@ public class OurLinkedStack<T> implements OurStack<T>{
     @Override
     public T pop()  //Remove element from 'top' of stack and return it.
     {
-        //The following statement is there just so that we can compile the class
-        //You will need to put the correct statements in here.
-        return null; 
+        if (head == null) {
+            return null;
+        }
+        LinkNode<T> node = head;
+        count--;
+        head = node.next;
+        return node.data; 
     }
     
     @Override
@@ -48,21 +52,29 @@ public class OurLinkedStack<T> implements OurStack<T>{
     @Override
     public int size() //Return number of elements on the stack
     {
-        //The following statement is there just so that we can compile the class
-        //Replace it with the correct one.
-        return 0;
+        if (head == null) {
+            return 0;
+        } else {
+            return count;
+        }
     }
     @Override
     public boolean isEmpty() //Return true if stack is empty, false otherwise.
     {
-        //The following statement is there just so that we can compile the class
-        //Replace it with the correct one.
-        return false;
+        if (head == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
     @Override
     public void clear() //Resets the stack. 
     {
-        //Fill in this method with the appropriate statements
+        if (head == null) {
+            return;
+        } else {
+            head = null;
+        }
     }
 
 

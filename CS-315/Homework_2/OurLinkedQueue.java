@@ -16,8 +16,15 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
     @Override
     public T add(T data)  //Add element to 'rear' of queue and return the parameter
     {
-        //You get to implement this method
-        return data;
+        LinkNode<T> newNode = new LinkNode<T>(data);
+        
+        if (head == null) {
+            head = newNode;
+            return newNode.data;
+        } else {
+            
+
+        }
     }
     
     @Override
