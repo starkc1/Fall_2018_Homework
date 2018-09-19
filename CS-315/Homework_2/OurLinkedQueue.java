@@ -13,6 +13,7 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
         head = tail = null;
         count = 0;
     }
+
     @Override
     public T add(T data)  //Add element to 'rear' of queue and return the parameter
     {
@@ -20,20 +21,30 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
         
         if (head == null) {
             head = newNode;
+            tail = newNode;
+            count++;
             return newNode.data;
         } else {
-            
-
+            count++;
+            LinkNode<T> node = tail;
+            tail = newNode;
+            node.next = tail;
+            return tail.data;
         }
     }
     
     @Override
     public T remove()  //Remove element from 'front' of queue and return it.
-            //Remember to adjust the tail if you need to.
     {
-        //The following statement is there just so that we can compile the class
-        //You will need to put the correct statements in here.
-        return null; 
+        
+        if (head == null) {
+            return null;
+        } else {
+            count--;
+            LinkNode<T> node = head;
+            head = node.next;
+            return node.data;
+        }
     }
     
     @Override
@@ -46,21 +57,33 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
     @Override
     public int size() //Return number of elements on the queue
     {
-        //The following statement is there just so that we can compile the class
-        //Replace it with the correct one.
-        return 0;
+        if (head == null) {
+            return 0;
+        } else {
+            return count;
+        }
     }
+
     @Override
     public boolean isEmpty() //Return true if queue is empty, false otherwise.
     {
-        //The following statement is there just so that we can compile the class
-        //Replace it with the correct one.
-        return false;
+        if (head == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
     @Override
     public void clear() //Resets the queue. 
     {
-        //Fill in this method with the appropriate statements
+
+        if (head == null) {
+            
+        } else {
+            head = null;
+        }
+
     }
 
 
