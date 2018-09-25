@@ -1,6 +1,6 @@
 #lang racket
 
-(define recList '((3 12 9 5) (7 7 12 2) (8 11 12 9) (12 5 16 3)))
+(define recList '((3 12 9 5) (7 7 12 2) (8 11 12 9) (1 5 16 3)))
 (define test '(1 2 3 4))
 
 (define (checkIntersect rec1 rec2)
@@ -8,12 +8,12 @@
       '()
       (if (or (> (getX (getFirstCoord rec1)) (getX (getSecondCoord (first rec2)))) (> (getX (getSecondCoord (first rec2))) (getX (getSecondCoord rec1))))
           '()
-          (if (or (< (getY (getFirstCoord rec1)) (getY (getSecondCoord (first rec2)))) (< (getY (getSecondCoord (first rec2))) (getY (getSecondCoord rec1))))
+          (if (or (> (getY (getFirstCoord rec1)) (getY (getSecondCoord (first rec2)))) (> (getY (getSecondCoord (first rec2))) (getY (getSecondCoord rec1))))
               '()
               (append
-               (list rec1)
-               (list rec2)
-               (intersectTest (rest rec2))
+               (list rec1) 
+               (list (first rec2))
+               (checkIntersect rec1 (rest rec2))
                )
           )
       )
@@ -41,8 +41,8 @@
   (if (equal? (length points) 0)
       "ERROR: No Points In List"
       (append
-       (list (first (rest (rest test))))
-       (list (first (rest (rest (rest test)))))
+       (list (first (rest (rest points))))
+       (list (first (rest (rest (rest points)))))
       )
   )
 )
