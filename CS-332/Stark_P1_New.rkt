@@ -25,7 +25,7 @@
               (append
                (list rect1)
                (list rect2)
-               ;(main (rest rectList))
+               (main (rest rectList))
               )
           )
       )
