@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author PUT YOUR NAME HERE
+ * @author Cameron Stark
  */
 public class Homework2Application {
     public static void main(String[] args) throws Exception
@@ -27,21 +27,23 @@ public class Homework2Application {
         sc.close();
     }//end main
     
-    public static void getCharactersFromUser(Scanner sc, 
-                                    OurLinkedStack<Character> charStack)
+    public static void getCharactersFromUser(Scanner sc, OurLinkedStack<Character> charStack)
     {
         System.out.println("Please enter any string");
         String str = sc.nextLine();
-        //Insert code to get each character from the string and push it 
-        //onto the charStack.
+
+        for (int i = 0; i < str.length(); i++) {
+            charStack.push(str.charAt(i));
+        }
     }
     
     public static void displayStack(OurLinkedStack<Character> charStack)
     {
-        //Insert code to display the contents of the charStack on the screen
-        //in such a way that, when the method exits, the stack is back to
-        //its original state.
-        //Hint: Use a temporary stack.
+        OurLinkedStack<Character> tempCharStack = charStack;
+
+        while(!tempCharStack.isEmpty()) {
+            System.out.println(tempCharStack.pop().toString());
+        }
     }
 
     public static int getNumberFromUser(Scanner sc, String which)
@@ -56,10 +58,24 @@ public class Homework2Application {
         return value;
     }
     
-    public static void roll(OurLinkedStack<Character> stack, 
-            int n, int k) throws Exception
+    public static void roll(OurLinkedStack<Character> stack, int n, int k) throws Exception
     {
-        //Insert code to implement roll as described in the text.
-        //You may need a temporary stack and a queue.
+        OurLinkedQueue<Character> queue = new OurLinkedQueue<Character>();
+
+        if (stack.size() < n) {
+            return;
+        }
+
+        for(int i = 0; i == n; i++) {
+           queue.add(stack.pop());
+        }
+
+        for(int i = 0; i == k; i++) {
+            queue.add(queue.remove());
+        }
+
+        for(int i = 0; i < queue.size(); i++) {
+            stack.push(queue.remove());
+        }
     }
 }//end class

@@ -29,7 +29,7 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
             LinkNode<T> node = tail;
             tail = newNode;
             node.next = tail;
-            return tail.data;
+            return node.data;
         }
     }
     
@@ -78,10 +78,11 @@ public class OurLinkedQueue<T> implements OurQueue<T>{
     public void clear() //Resets the queue. 
     {
 
-        if (head == null) {
-            
+        if (head == null || tail == null) {
+            return;
         } else {
             head = null;
+            tail = null;
         }
 
     }

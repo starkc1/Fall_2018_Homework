@@ -15,7 +15,9 @@ public class OurLinkedStack<T> implements OurStack<T>{
     @Override
     public T push(T data)  //Add element to 'top' of stack and return the parameter
     {
-        if (data == null) return null;
+        if (data == null){
+            return null;
+        }
         LinkNode<T> node = new LinkNode<T>(data);
         count++;
         if (head == null)
@@ -74,6 +76,7 @@ public class OurLinkedStack<T> implements OurStack<T>{
             return;
         } else {
             head = null;
+            count = 0;
         }
     }
 

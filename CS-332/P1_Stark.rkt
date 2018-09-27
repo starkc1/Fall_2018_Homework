@@ -1,0 +1,76 @@
+#lang racket
+(define recList '((2 10 7 7) (1 4 6 1) (6 8 12 5) (5 4 11 1)))
+(define test '(1 2 3 4))
+(define test2 '(5 6 7 8))
+
+(define (main mainList)
+  (if (equal? (length mainList) 0)
+      '()
+      (if (checkLeft 1 2)
+          "Is True"
+          "Is False"
+      )
+  )
+)
+
+(define (doOverlapLeft rect1 rect2)
+  (if (or
+       (equal? (length rect1) 0)
+       (equal? (length rect2) 0)
+      )
+      #t
+      (if (or
+           (checkLeft (firstX rect1) (secondX rect2))
+           (checkLeft (firstX rect2) (secondX rect1))
+          )
+          #t
+          #f
+      )
+  )
+)
+
+(define (doOverlapAbove rect1 rect2)
+  (if (or
+       (equal? (length rect1) 0)
+       (equal? (length rect2) 0)
+      )
+      #t
+      (if (or
+           (checkAbove (topY rect1) (bottomY rect2))
+           (checkAbove (topY rect2) (bottomY rect2))
+          )
+          #t
+          #f
+      )
+  )
+)
+
+(define (checkLeft x1 x2)
+  (if (> x1 x2)
+      #t
+      #f
+  )
+)
+
+(define (checkAbove y1 y2)
+  (if (< y1 y2)
+      #t
+      #f
+  )
+)
+
+(define (firstX rect)
+  (first rect)
+)
+
+(define (secondX rect)
+  (first(rest(rest rect)))
+)
+
+(define (topY rect)
+  (first(rest rect))
+)
+
+(define (bottomY rect)
+  (first(rest(rest(rest rect))))
+)
