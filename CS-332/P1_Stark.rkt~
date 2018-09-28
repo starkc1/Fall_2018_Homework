@@ -4,18 +4,11 @@
 (define test2 '(5 6 7 8))
 
 (define (main mainList)
-  (if (or (equal? (length mainList) 0) (equal? (length (rest mainList)) 0))
+  (if (equal? (length mainList) 0)
       '()
-      (if (or
-           (doOverlapLeft (first mainList) (first(rest mainList)))
-           (doOverlapAbove (first mainList) (first(rest mainList)))
-          )
-          (main (rest mainList))
-          (append
-           (list (first mainList))
-           (list (first(rest mainList)))
-           (main (rest mainList))
-          )
+      (if (checkLeft 1 2)
+          "Is True"
+          "Is False"
       )
   )
 )

@@ -12,7 +12,9 @@ public class Homework2Application {
         getCharactersFromUser(sc, charStack);
         if(charStack.size() > 0)
         {
+           
             displayStack(charStack); 
+           
             int n = getNumberFromUser(sc, "n");
             int k = getNumberFromUser(sc, "k");
             roll(charStack, n, k);
@@ -39,11 +41,17 @@ public class Homework2Application {
     
     public static void displayStack(OurLinkedStack<Character> charStack)
     {
-        OurLinkedStack<Character> tempCharStack = charStack;
+        OurLinkedStack<Character> tempCharStack = new OurLinkedStack<Character>();
 
         while(!tempCharStack.isEmpty()) {
-            System.out.println(tempCharStack.pop().toString());
+            System.out.println(tempCharStack.push(charStack.pop()));
         }
+
+        while(!tempCharStack.isEmpty()) {
+            charStack.push(tempCharStack.pop());
+        }
+
+        
     }
 
     public static int getNumberFromUser(Scanner sc, String which)
@@ -61,8 +69,8 @@ public class Homework2Application {
     public static void roll(OurLinkedStack<Character> stack, int n, int k) throws Exception
     {
         OurLinkedQueue<Character> queue = new OurLinkedQueue<Character>();
-
-        if (stack.size() < n) {
+        
+        if (stack.size() > n) {
             return;
         }
 
