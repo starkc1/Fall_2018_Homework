@@ -43,7 +43,7 @@ public class Homework2Application {
     {
         OurLinkedStack<Character> tempCharStack = new OurLinkedStack<Character>();
 
-        while(!tempCharStack.isEmpty()) {
+        while(!charStack.isEmpty()) {
             System.out.println(tempCharStack.push(charStack.pop()));
         }
 
