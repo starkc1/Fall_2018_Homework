@@ -4,6 +4,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//https://stackoverflow.com/questions/19625637/recursively-generating-binary-strings-in-java-using-arraylist
+//https://introcs.cs.princeton.edu/java/23recursion/GrayCode.java.html
 public class BinaryCodes {
 
     public static void main(String[] args) {
