@@ -4,21 +4,20 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//https://stackoverflow.com/questions/19625637/recursively-generating-binary-strings-in-java-using-arraylist
-//https://introcs.cs.princeton.edu/java/23recursion/GrayCode.java.html
+
 public class BinaryCodes {
 
     public static void main(String[] args) {
+        
         Scanner scanner = new Scanner(System.in);
+        String type = getUsersType(scanner);
 
-        String type = getUsersType();
-
-        if (type == 'B') {
-            int bits = getNumberBits();
+        if (type.equals("B")) {
+            int bits = getNumberBits(scanner);
             generateBinaryCode(bits, new ArrayList<String>(0));
-        } else if (type == 'G') {
-            int bits = getNumberBits();
-            generateGrayCode(bits, new ArrayList<String>(0));
+        } else if (type.equals("G")) {
+            int bits = getNumberBits(scanner);
+            generateGrayCode(bits);
         } else {
             System.out.println("Wrong input");
         }
@@ -27,21 +26,59 @@ public class BinaryCodes {
         scanner.close();
     }
 
-    public static String getUsersType() {
+    public static String getUsersType(Scanner scanner) {
         System.out.println("Please Enter B for Binary or G for Gray");
         return(scanner.nextLine().toUpperCase());
     }
 
-    public static int getNumberBits() {
+    public static int getNumberBits(Scanner scanner) {
         System.out.println("Please Enter the number of bits you would like");
-        return(scanner.nextLine());
+        return(Integer.parseInt(scanner.nextLine()));
     }
 
     public static void generateBinaryCode(int bits, ArrayList<String> list) {
+        int expListSize = (int)Math.pow(2, bits);
+        int listSize = list.size();
 
+        if (listSize == expListSize) {
+            for (int i = 0; i < listSize; i++) {
+                System.out.println(list.get(i));
+            }
+        } else {
+            StringBuilder stringBuilder = new StringBuilder(bits);
+
+            for (int i = bits - 1; i >= 0; i--) {
+                stringBuilder.append((listSize >> i) & 1);
+            }
+
+            list.add(stringBuilder.toString());
+
+            generateBinaryCode(bits, list);
+        }
     }
 
-    public static void generateGrayCode(int bits, ArrayList<String> list) {
-        
+    public static void generateGrayCode(int bits) {
+        grayCode("", bits);
     }
+
+    public static void grayCode(String pref, int bits) {
+        if (bits == 0) {
+            System.out.println(pref);
+        } else {
+            grayCode(pref + "0", bits - 1);
+            reverseGrayCode(pref + "1", bits - 1);
+        }
+    }
+
+    public static void reverseGrayCode(String pref, int bits) {
+        if (bits == 0) {
+            System.out.println(pref);
+        } else {
+            grayCode(pref + "1", bits - 1);
+            reverseGrayCode(pref + "0", bits - 1);
+        }
+    }  
+
+
+
 }
