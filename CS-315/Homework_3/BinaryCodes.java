@@ -45,15 +45,20 @@ public class BinaryCodes {
                 System.out.println(list.get(i));
             }
         } else {
-            StringBuilder stringBuilder = new StringBuilder(bits);
+            try {
+                StringBuilder stringBuilder = new StringBuilder(bits);
 
-            for (int i = bits - 1; i >= 0; i--) {
-                stringBuilder.append((listSize >> i) & 1);
+                for (int i = bits - 1; i >= 0; i--) {
+                    stringBuilder.append((listSize >> i) & 1);
+                }
+    
+                list.add(stringBuilder.toString());
+    
+                generateBinaryCode(bits, list);
+            } finally {
+
             }
-
-            list.add(stringBuilder.toString());
-
-            generateBinaryCode(bits, list);
+            
         }
     }
 
