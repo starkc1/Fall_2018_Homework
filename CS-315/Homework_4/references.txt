@@ -1,3 +1,8 @@
 https://www.geeksforgeeks.org/bubble-sort/
 
-https://www.geeksforgeeks.org/iterative-merge-sort/
+https://algs4.cs.princeton.edu/14analysis/Mergesort.java.html
+
+
+https://www.programcreek.com/2012/11/quicksort-array-in-java/
+
+https://stackoverflow.com/questions/18672643/how-to-print-a-table-of-information-in-java

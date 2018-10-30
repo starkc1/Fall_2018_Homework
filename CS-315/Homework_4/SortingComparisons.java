@@ -1,27 +1,59 @@
 import java.util.Random;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 public class SortingComparisons {
     
+    public static int mergeComparesValue;
+    public static int quickComparesValue;
+
     public static void main(String[] args) {
 
         Random rand = new Random();
         String[] bubbleCompares = new String[4];
         String[] mergeCompares = new String[4];
-        //String[] quickCompares = new String[4];
- 
+        String[] quickCompares = new String[4];
+        String[] arraySizes = new String[4];
         for (int i = 1; i < 5; i++) {
+            mergeComparesValue = 0;
+            quickComparesValue = 0;
             int arraySize = (int)Math.pow(10, i);
             int[] array = new int[arraySize];
-            for (int j = 0; j < array.length; j++) {
+            for (int j = 0; j < arraySize; j++) {
                 array[j] = rand.nextInt(arraySize);
             }
 
+
+            arraySizes[i - 1] = Integer.toString(arraySize);
             bubbleCompares[i-1] = bubbleSort(array);
             //System.out.println(bubbleCompares[i-1]);
-            mergeCompares[i -1] = mergeSort(array, array.length);
-            System.out.println(mergeCompares[i-1]);
+            mergeSort(array);
+            mergeCompares[i - 1] = Integer.toString(mergeComparesValue);
+            //System.out.println(mergeCompares[i -1]);
+            quickSort(array, 0, arraySize - 1);
+            quickCompares[i - 1] = Integer.toString(quickComparesValue);
+            //System.out.println(quickCompares[i - 1]);
         }
-
+        
+        Object[][] table  = new String[5][];
+        table[0] = new String[] {
+            "Number of Elements",
+            "Bubble Sort",
+            "Merge Sort",
+            "Quick Sort"
+        };
+        for (int i = 1; i < 5; i++) {
+           table[i] = new String[] {
+               arraySizes[i-1],
+               bubbleCompares[i-1],
+               mergeCompares[i-1],
+               quickCompares[i-1]
+           };
+        }
+        
+        for (Object[] row: table) {
+            System.out.format("%15s %15s %15s %15s\n", row);
+        }
     }
 
     public static String bubbleSort(int[] array) {
@@ -42,80 +74,88 @@ public class SortingComparisons {
         return Integer.toString(compares);
     }
 
-    public static String mergeSort(int[] array, int n) {
-        int compares = 0;
-
-        int current_size;
-
-        int left_start;
-
-        for (current_size = 1; current_size <= n-1; current_size = 2*current_size) {
-            for (left_start = 0; left_start < n -1; left_start += 2*current_size) {
-                int middle = left_start + current_size - 1;
-
-                int right_end = Math.min(left_start + 2 * current_size - 1, n - 1);
-
-                compares = compares + merge(array, left_start, middle, right_end);
-            }
-        }
-        return Integer.toString(compares);
-    }
-
-
-    public static int merge(int[] array, int left, int middle, int right) {
-        int compares = 0;
-        int i, j, k;
-
-        int n1 = middle - left + 1;
-        int n2 = right - middle;
-
-        int[] Left = new int[n1];
-        int[] Right = new int[n2];
-
-        for (i = 0; i < n1; i++) {
-            Left[i] = array[left + i];
-        }
+    public static int[] mergeSort(int[] array) {
         
-        for (j = 0; j < n2; j++) {
-            Right[j] = array[middle + 1 + j];
+        int size = array.length;
+
+        if (size <= 1) {
+            return array;
         }
 
-        i = 0;
-        j = 0;
-        k = left;
+        int[] leftArray = new int[size / 2];
+        int[] rightArray = new int[size - size / 2];
 
-        while (i < n1 && j < n2) {
-            if (Left[i] <= Right[j]) {
-                array[k] = Left[i];
-            } else {
-                array[k] = Right[j];
-                j++;
-            }
-            k++;
-            compares++;
+        for (int i = 0; i < leftArray.length; i++) {
+            leftArray[i] = array[i];
+        }
+        for (int i = 0; i < rightArray.length; i++) {
+            rightArray[i] = array[i + size/2];
         }
 
-        while (i < n1) {
-            array[k] = Left[j];
-            i++;
-            k++;
-        }
-
-        while(j < n2) {
-            array[k] = Right[j];
-            j++;
-            k++;
-        }
-
-        return compares;
+        return mergeArray(mergeSort(leftArray), mergeSort(rightArray));
     }
 
 
-    
+    public static int[] mergeArray(int[] left, int[] right) {
+        int[] merged = new int[left.length + right.length];
 
-    public static String[] quickSort() {
-        String[] compValue = new String[1];
+        int i = 0;
+        int j = 0;
 
-        return compValue;
+        for (int k = 0; k < merged.length; k++) {
+            if (i >= left.length) {
+                merged[k] = right[j++];
+            } else if (j >= right.length) {
+                merged[k] = left[i++];
+            } else if (left[i] <= right[j]) {
+                merged[k] = left[i++];
+            } else {
+                merged[k] = right[j++];
+            }
+            mergeComparesValue++;
+        }
+        return merged;
+    } 
+
+    public static void quickSort(int[] array, int low, int high) {
+        if (array == null || array.length == 0) {
+            return;
+        }
+        if (low >= high) {
+            return;
+        }
+
+        int middle = low + (high - low) / 2;
+        int pivot = array[middle];
+
+        int i = low;
+        int j = high;
+
+        while (i <= j) {
+            while (array[i] < pivot) {
+                i++;
+            }
+            
+            while (array[j] > pivot) {
+                j--;
+            }
+
+            if (i <= j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+            quickComparesValue++;
+        }
+
+        if (low < j) {
+            quickSort(array, low, j);
+        }
+
+        if (high > i) {
+            quickSort(array, i, high);
+        }
     }
 }
