@@ -9,149 +9,141 @@
     body {
         background-color: #FFF;
         text-align: center;
+        padding: 0;
+        margin: 0;
         overflow: hidden;
+        font-family: "Courier New"; 
     }
 
-    .page-header-card {
-        box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
-        background-color: whitesmoke;
-        height: auto;
-        position: fixed;
-        top: 1px;
-        left: 0px;
-        margin: 0px 15px;
-        width: 96%;
-        padding: 0px;
-    }
-
-    .page-header-heading {
-        padding: 0px;
-        height: 100%;
+    .wrapper {
         width: 100%;
-        text-align: center;
-    }
-    
-    .page-header-content {
-        display: block;
-    }
-
-    .page-header-action {
+        height: 100vh;
         display: flex;
-        width: 100%;
-        margin: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar {
+        margin: 0;
+        width: 350px;
+        height: 100vh;
         text-align: center;
+        color: #FFF;
+        z-index: 9999;
+        background-color: #26a69a;
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
     }
-    
+
+    .sidebar-header {
+        height: 125px;
+        margin-top: -20px;
+        padding-top: 20px;
+        background-color: #00796b;
+    }
+
+    .sidebar-content {
+        padding: 5px;
+    }
+
     .fsm-input {
+        width: 75%;
+        margin: auto;
+        margin-bottom: 10px;
+        font-size: 16px;
         border: 0;
-        margin: 5px;
-        font-size: 14px;
-        border-radius: 0;
-        width: 33%;
-        cursor: pointer;
-        background-color:#FFF;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        transition: all .5s;
-        padding: 10px;
-    }
-
-    .fsm-input:hover {
+        border-radius: 10px;
         box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
-    }
-
-    .fsm-input:focus {
-        border: 0;
-        outline: 0;
-    }
-
-    .fsm-button {
-        margin-top: 5px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-        border: 0;
         background-color: #FFF;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        color: #000;
-        width: 90%;
-        padding: 10px;
-        cursor: pointer;
+        padding: 5px;
     }
 
-    .fsm-button:hover {
-        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    .fsm-input:hover, .fsm-button:hover {
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
     }
 
-    .fsm-button:focus {
-        outline: 0;
+    .fsm-input:focus, .fsm-button:focus {
+        outline: none;
     }
 
     .error-text {
         color: red;
     }
 
-    .fsm-view, .fsm-testing {
-        width: 95%;
-        margin: auto;
-        background-color: whitesmoke;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    .fsm-button {
+        width: 90%;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
     }
 
     .content {
-        overflow-y: scroll;
-        height: calc(100vh - 375px);
-        margin-top: 395px;
+        width: calc(100% - 350px);
+        height: 100vh;
+        background-color: #E0E0E0;
+    }
+
+    .fsm-view {
+        width: 100%;
+    }
+
+    .fsm-testing {
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
     }
 </style>
 
 <body ng-app="StarkP2" ng-controller="MainController">
-    <div class="page-header-card">
-        <div class="page-header-heading">
-            <h2>Programming Assignment 2: Finite State Machines</h2>
-            <h3>By: Cameron Stark</h3>
-        </div>
-        <hr>
-        <div class="page-header-content">
-            <h3>Define States For Finite State Machine</h3>
-            <p>FSM must start with a <b>Start State</b> and end with a <b>Final State</b></p>
-            <p>{{ sample }}</p>
-            <div class="page-header-action">
-                <input ng-model="newState.current" class="fsm-input" type="number" id="current-state" placeholder="Current State">
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Programming Assignment 2: Finite State Machines</h3>
+                <h4>By: Cameron Stark</h4>
+            </div>
+            <div class="sidebar-content">
+                <h4>Define States For Finite State Machine</h4>
+                <p>FSM must start with a <b>Start State</b> and end with <b>Final State</b></p>
+                <hr>
+                <input ng-model="newState.current" class="fsm-input" type="number" id="current-state" placeholder="Current State"
+                    min="0">
                 <input ng-model="newState.value" class="fsm-input" type="text" id="tested-value" placeholder="Tested Value">
-                <input ng-model="newState.next" class="fsm-input" type="number" id="next-state" placeholder="Next State">
+                <input ng-model="newState.next" class="fsm-input" type="number" id="next-state" placeholder="Next State"
+                    min="0">
                 <select ng-model="newState.state" class="fsm-input">
                     <option value="Start">Start</option>
                     <option value="Transition">Transition</option>
                     <option value="Garbage">Garbage</option>
                     <option value="Final">Final</option>
                 </select>
+                <p class="error-text">{{ error }}</p>
+                <button ng-click="addTransition()" role="button" class="fsm-button">Add New Transition</button>
             </div>
+        </div>
+        <div class="content">
+            <div class="fsm-view">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Current State</th>
+                        <th>Value</th>
+                        <th>Next State</th>
+                        <th>State Type</th>
+                    </tr>
+                    <tr ng-repeat="states in fsm">
+                        <td>{{ states.current }}</td>
+                        <td>{{ states.value }}</td>
+                        <td>{{ states.next }}</td>
+                        <td>{{ states.state }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="fsm-testing">
+                <input ng-model="testString" class="fsm-input" type="string" id="test-string" placeholder="Enter a String">
+                <button ng-click="stringTest()" role="button" class='fsm-button'>Test String</button>
+            </div>
+        </div>
+    </div>
 
-        </div>
-        <p class="error-text">{{ error }}</p>
-        <button ng-click="addTransition()" role="button" class="fsm-button">Add New Transition</button>
-    </div>
-    <div class="content">
-        <div class="fsm-view">
-            <table style="width: 100%;">
-                <tr>
-                    <th>Current State</th>
-                    <th>Value</th>
-                    <th>Next State</th>
-                    <th>State Type</th>
-                </tr>
-                <tr ng-repeat="states in fsm">
-                    <td>{{ states.current }}</td>
-                    <td>{{ states.value }}</td>
-                    <td>{{ states.next }}</td>
-                    <td>{{ states.state }}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="fsm-testing">
-            <input ng-model="testString" class="fsm-input" type="string" id="test-string" placeholder="Enter a String"> 
-            <button ng-click="stringTest()" role="button" class='fsm-button'>Test String</button>
-        </div>
-    </div>
 
 
     <script src="angular.min.js"></script>
@@ -162,6 +154,7 @@
 
                 $scope.fsm = []
                 $scope.sample = "Sample Start State - Current State: 0, Tested Value: a, Next State: 1, State Type: S";
+                $scope.testString;
 
                 $scope.addTransition = function () {
                     console.log($scope.newState);
@@ -184,11 +177,41 @@
                     console.log($scope.fsm);
                 }
 
-                $scope.stringTest = function() {
-                    if ($scope.fsm[$scope.fsm.length - 1].state != 'Final') {
-                        $scope.error = 'ERROR: Final State must be last item in FSM';
-                        return;
+                $scope.stringTest = function () {
+                    // if ($scope.fsm[$scope.fsm.length - 1].state != 'Final') {
+                    //     $scope.error = 'ERROR: Final State must be last item in FSM';
+                    //     return;
+                    // }
+                    var currentState = 0;
+                    var currentValue;
+                    var lastState = 0;
+                    var stateType = "Start";
+                    var allowedString = false;
+
+                    var stringArray = $scope.testString.toLowerCase().split("");
+                    var fsm = $scope.fsm;
+                    console.log(stringArray);
+
+                    for (i = 0; i < stringArray.length; i++) {
+                        currentValue = stringArray[i];
+                        for (j = 0; j < fsm.length; i++) {
+                            if (currentState == fsm[i].state) {
+                                switch(currentValue) {
+                                    case "a":
+                                        currentState = fsm[j].next;
+                                        break;
+                                    case "b":
+                                        currentState = fsm[j].next;
+                                        break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        console.log(currentState);
                     }
+
+
                 }
             }]);
     </script>

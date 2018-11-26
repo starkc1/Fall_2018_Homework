@@ -21,8 +21,7 @@ public class PrintSchedulingSimulation {
         double avgNumUnitsPerJobArrival = 3;
         double probOfArrivalInOneUnit = (1.0/avgNumUnitsPerJobArrival) 
                 * Math.exp(-1.0/avgNumUnitsPerJobArrival);
-        System.out.println("Probability of arrival in one unit of time: " +
-                probOfArrivalInOneUnit);
+        System.out.println("Probability of arrival in one unit of time: " + probOfArrivalInOneUnit);
         int minTimeRequired = 3;
         int maxTimeRequired = 8;
         int numIterations = 30;
@@ -31,8 +30,7 @@ public class PrintSchedulingSimulation {
                 numIterations, probOfArrivalInOneUnit);
     }//end main
     
-    public static void runSimulation(Random rand, int minTimeRequired, 
-            int maxTimeRequired, int numIterations, double probOfArrival)
+    public static void runSimulation(Random rand, int minTimeRequired, int maxTimeRequired, int numIterations, double probOfArrival)
     {
         //keeps track of the number of jobs of the specified priority
         int [] priorityJobCounters = new int[3];  

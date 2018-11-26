@@ -70,54 +70,27 @@ public class PrintSchedulingSimulation2 {
         // int numIterations = 30;
     }// end main
 
-    public static void runSimulation(Random rand, int minTimeRequired, int maxTimeRequired, int numIterations,
-            double probOfArrival) {
-        // keeps track of the number of jobs of the specified priority
-        int[] priorityJobCounters = new int[3];
-        MinHeap<PrintJob> printQ = new MinHeap(10);
-        init(priorityJobCounters); // set all elements in the array to 0
-        int timeLeftOnPrinter = 0; // this is basically the printer
-        // this keeps track of the number of jobs that actually get to the printer
-        int numberServiced = 0;
-        // this keeps track of the total time spent on the printer by all jobs
-        // that made it to the printer.
-        int totalWaitTime = 0;
-        for (int numTimes = 0; numTimes < numIterations; numTimes++) {
-            if (rand.nextDouble() < probOfArrival) // check to see if a job should arrive
-            {
-                // Create the necessary info for that job.
-                int jobPriority = getJobPriority(rand.nextDouble());
-                priorityJobCounters[jobPriority - 1]++;
-                int printTime = rand.nextInt(maxTimeRequired) + minTimeRequired;
-                // Create the job with that info.
-                PrintJob job = new PrintJob(jobPriority, printTime);
-                // Immediately add the job to the queue.
-                printQ.add(job);
-                System.out.println("Job " + job.getJobNumber() + " with priority " + jobPriority + " and print time "
-                        + printTime + " added to queue.");
-            }
-            // Check to see if printer is occupied
-            if (timeLeftOnPrinter != 0) {
-                // If it is, decrement the time left for the current job
-                timeLeftOnPrinter--;
-                // Check to see if anyone is waiting
-                if (!printQ.isEmpty())
-                    totalWaitTime++;
-            } else // printer is free
-            {
-                // Check to see if any job is waiting so that it can be sent to the printer
-                if (!printQ.isEmpty()) {
-                    PrintJob job = printQ.remove();
-                    System.out.println("Job " + job.getJobNumber() + " with priority " + job.getPriority()
-                            + " and print time " + job.getTimeRequired() + " sent to printer.");
-                    timeLeftOnPrinter = job.getTimeRequired(); // reset print clock
-                    numberServiced++; // count the number of jobs sent to the printer
-                }
-            }
-        }
+    public static void runSimulation(Random rand, int minTimeRequired, int maxTimeRequired, int numIterations, double probOfArrival) {
 
-        // display statistics about the simulation
-        printStats(priorityJobCounters, numberServiced, totalWaitTime, printQ.size());
+        int[] priorityJobCounters = new int[3];
+
+        MinHeap<PrintJob> printer1Queue = new MinHeap(10);
+        MinHeap<PrintJob> printer2Queue = new MinHeap(10);
+        init(priorityJobCounters);
+        int timeLeftOnPrinter1 = 0;
+        int timeLeftOnPrinter2 = 0;
+
+        int numberServicedPrinter1 = 0;
+        int numberServicedPrinter2 = 0;
+        int totalServiced = 0;
+
+        int printer1WaitTime = 0;
+        int printer2WaitTime = 0;
+        int totalWaitTime = 0;
+
+        for (int numTimes = 0; numTimes < numIterations; numTimes++) {
+
+        }
     }
 
     public static void init(int[] numPriorJobs) {
