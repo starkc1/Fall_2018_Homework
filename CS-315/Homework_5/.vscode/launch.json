@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - PrintSchedulingSimulation2",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "PrintSchedulingSimulation2",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - PrintSchedulingSimulation",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "PrintSchedulingSimulation",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - PrintJob",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "PrintJob",
+            "args": ""
+        }
+    ]
+}
