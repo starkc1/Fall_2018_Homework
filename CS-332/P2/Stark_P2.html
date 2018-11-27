@@ -110,14 +110,19 @@
                 <input ng-model="newState.value" class="fsm-input" type="text" id="tested-value" placeholder="Tested Value">
                 <input ng-model="newState.next" class="fsm-input" type="number" id="next-state" placeholder="Next State"
                     min="0">
-                <select ng-model="newState.state" class="fsm-input">
+                <!-- <select ng-model="newState.state" class="fsm-input">
                     <option value="Start">Start</option>
                     <option value="Transition">Transition</option>
                     <option value="Garbage">Garbage</option>
                     <option value="Final">Final</option>
+                </select> -->
+                <select ng-model="isFinal" class="fsm-input">
+                    <option selected disabled>Is Final State?</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                 </select>
                 <p class="error-text">{{ error }}</p>
-                <button ng-click="addTransition()" role="button" class="fsm-button">Add New Transition</button>
+                <button ng-click="addState()" role="button" class="fsm-button">Add New State</button>
             </div>
         </div>
         <div class="content">
@@ -156,25 +161,21 @@
                 $scope.sample = "Sample Start State - Current State: 0, Tested Value: a, Next State: 1, State Type: S";
                 $scope.testString;
 
-                $scope.addTransition = function () {
+                $scope.isFinal = "Is Final State?";
+
+                $scope.addState = function () {
                     console.log($scope.newState);
-                    if ($scope.fsm.length == 0) {
-                        if ($scope.newState.state == 'Start') {
-
-                        } else {
-                            $scope.error = "ERROR: first state must be of state type: S or Start";
-                            return;
-                        }
-                    }
-
-                    if ($scope.fsm.length > 0 && $scope.newState.state == 'Start') {
-                        $scope.error = 'ERROR: Start state already defined';
-                        return;
+                    if ($scope.newState.current == 0) {
+                        $scope.newState.state = "Start";
+                    } else if ($scope.isFinal == 'no' || $scope.isFinal == 'Is Final State?') {
+                        $scope.newState.state = 'Transition';
+                    } else if ($scope.isFinal == 'yes') {
+                        $scope.newState.state = 'Final';
                     }
                     $scope.fsm.push($scope.newState);
+
                     $scope.newState = {};
-                    $scope.error = '';
-                    console.log($scope.fsm);
+                    $scope.isFinal = "Is Final State?";
                 }
 
                 $scope.stringTest = function () {
@@ -192,26 +193,41 @@
                     var fsm = $scope.fsm;
                     console.log(stringArray);
 
-                    for (i = 0; i < stringArray.length; i++) {
-                        currentValue = stringArray[i];
-                        for (j = 0; j < fsm.length; i++) {
-                            if (currentState == fsm[i].state) {
-                                switch(currentValue) {
-                                    case "a":
-                                        currentState = fsm[j].next;
-                                        break;
-                                    case "b":
-                                        currentState = fsm[j].next;
-                                        break;
+                    var i = 0;
+                    for (j = 0; j < fsm.length; j++) {
+                        if (i < stringArray.length) {
+                            if (currentState == fsm[j].current && stringArray[i] == fsm[j].value) {
+                                currentState = fsm[j].next;
+                                stateType = fsm[j].state;
+                                i++; 
+                                if (fsm[j].next <= fsm[j].current) {
+                                    j = 0;
                                 }
-                                break;
-                            }
-                            break;
+                            } 
+                        } else {
+                            j = fsm.length + 1;
                         }
-                        console.log(currentState);
+
+                    }
+                    if (stateType == "Final") {
+                        console.log('String Accepted');
+                    } else if (stateType == "Start" || stateType == "Transition") {
+                        console.log('String Not Accepted');
                     }
 
-
+                    // console.log(currentValue[i]);
+                    // switch (currentValue[i]) {
+                    //     case "a":
+                    //         currentState = fsm[j].next;
+                    //         stateType = fsm[j].state;
+                    //         i++
+                    //         break;
+                    //     case "b":
+                    //         currentState = fsm[j].next;
+                    //         stateType = fsm[j].state;
+                    //         i++
+                    //         break;
+                    // }
                 }
             }]);
     </script>

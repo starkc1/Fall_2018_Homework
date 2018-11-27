@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author Cameron Stark
  */
-public class PrintSchedulingSimulation2 {
+public class PrintSchedulingSimulation3 {
     public static void main(String[] args) {
         double avgNumUnitsPerJobArrival;
         int minTimeRequired;
@@ -89,8 +89,69 @@ public class PrintSchedulingSimulation2 {
         int totalWaitTime = 0;
 
         for (int numTimes = 0; numTimes < numIterations; numTimes++) {
+            if (rand.nextDouble() < probOfArrival) {
+                int jobPriority = getJobPriority(rand.nextDouble());
+                priorityJobCounters[jobPriority - 1]++;
+                int printTime = rand.nextInt(maxTimeRequired) + minTimeRequired;
+
+                PrintJob job = new PrintJob(jobPriority, printTime);
+
+                if (timeLeftOnPrinter1 != 0) {
+                    printer2Queue.add(job);
+                } else if (timeLeftOnPrinter2 != 0) {
+                    printer1Queue.add(job);
+                } else {
+                    printer1Queue.add(job);
+                }
+
+                System.out.println("Job " + job.getJobNumber() 
+                + " with priority " + jobPriority + " and print time "
+                + printTime 
+                + " added to queue.");
+            }
+
+            if (timeLeftOnPrinter1 != 0) {
+                timeLeftOnPrinter1--;
+
+                if (!printer1Queue.isEmpty()) {
+                    printer1WaitTime++;
+                }
+            } else if (timeLeftOnPrinter2 != 0) {
+                timeLeftOnPrinter2--;
+
+                if (!printer2Queue.isEmpty()) {
+                    printer2WaitTime++;
+                }
+            } else {
+                if (!printer1Queue.isEmpty()) {
+
+                    PrintJob job = printer1Queue.remove();
+
+                    System.out.println("Job " + job.getJobNumber() 
+                        + " with priority " + job.getPriority() + " and print time "
+                        + job.getTimeRequired()
+                        + " sent to printer 1.");
+                    timeLeftOnPrinter1 = job.getTimeRequired(); 
+                    numberServicedPrinter1++;  
+
+                } else if (!printer2Queue.isEmpty()) {
+                    PrintJob job = printer2Queue.remove();
+
+                    System.out.println("Job " + job.getJobNumber() 
+                        + " with priority " + job.getPriority() + " and print time "
+                        + job.getTimeRequired()
+                        + " sent to printer 2.");
+
+                    timeLeftOnPrinter2 =  job.getTimeRequired();
+                    numberServicedPrinter2++;
+                }
+            }
 
         }
+        totalServiced = numberServicedPrinter1 + numberServicedPrinter2;
+        totalWaitTime = printer1WaitTime + printer2WaitTime;
+        int totalSize = printer1Queue.size() + printer2Queue.size();
+        printStats(priorityJobCounters, totalServiced, totalWaitTime, totalSize);  
     }
 
     public static void init(int[] numPriorJobs) {
