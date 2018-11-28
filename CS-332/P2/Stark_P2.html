@@ -179,10 +179,6 @@
                 }
 
                 $scope.stringTest = function () {
-                    // if ($scope.fsm[$scope.fsm.length - 1].state != 'Final') {
-                    //     $scope.error = 'ERROR: Final State must be last item in FSM';
-                    //     return;
-                    // }
                     var currentState = 0;
                     var currentValue;
                     var lastState = 0;
@@ -215,19 +211,6 @@
                         console.log('String Not Accepted');
                     }
 
-                    // console.log(currentValue[i]);
-                    // switch (currentValue[i]) {
-                    //     case "a":
-                    //         currentState = fsm[j].next;
-                    //         stateType = fsm[j].state;
-                    //         i++
-                    //         break;
-                    //     case "b":
-                    //         currentState = fsm[j].next;
-                    //         stateType = fsm[j].state;
-                    //         i++
-                    //         break;
-                    // }
                 }
             }]);
     </script>
