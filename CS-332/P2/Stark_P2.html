@@ -110,12 +110,6 @@
                 <input ng-model="newState.value" class="fsm-input" type="text" id="tested-value" placeholder="Tested Value">
                 <input ng-model="newState.next" class="fsm-input" type="number" id="next-state" placeholder="Next State"
                     min="0">
-                <!-- <select ng-model="newState.state" class="fsm-input">
-                    <option value="Start">Start</option>
-                    <option value="Transition">Transition</option>
-                    <option value="Garbage">Garbage</option>
-                    <option value="Final">Final</option>
-                </select> -->
                 <select ng-model="isFinal" class="fsm-input">
                     <option selected disabled>Is Final State?</option>
                     <option value="no">No</option>
@@ -146,6 +140,7 @@
                 <input ng-model="testString" class="fsm-input" type="string" id="test-string" placeholder="Enter a String">
                 <button ng-click="stringTest()" role="button" class='fsm-button'>Test String</button>
             </div>
+            <h3>{{ result }}</h3>
         </div>
     </div>
 
@@ -155,51 +150,51 @@
     <script>
         var app = angular.module('StarkP2', [])
             .controller('MainController', ['$scope', function ($scope) {
-                $scope.newState = {};
+                $scope.newState = {}; //Define user input new state
 
-                $scope.fsm = []
-                $scope.sample = "Sample Start State - Current State: 0, Tested Value: a, Next State: 1, State Type: S";
-                $scope.testString;
+                $scope.fsm = []; //Finite State Machine
+                $scope.sample = "Sample Start State - Current State: 0, Tested Value: a, Next State: 1, State Type: S"; //Sameple input
+                $scope.testString; //String to be tested
 
                 $scope.isFinal = "Is Final State?";
 
-                $scope.addState = function () {
+                $scope.addState = function () { //Function that takes the user input and adds it to the finite state machine array.
                     console.log($scope.newState);
-                    if ($scope.newState.current == 0) {
+                    if ($scope.newState.current == 0) { //If the new state added is 0, set it as the start state
                         $scope.newState.state = "Start";
-                    } else if ($scope.isFinal == 'no' || $scope.isFinal == 'Is Final State?') {
+                    } else if ($scope.isFinal == 'no' || $scope.isFinal == 'Is Final State?') { //If the new State is not either 0 or the final state, set it as a transition state
                         $scope.newState.state = 'Transition';
-                    } else if ($scope.isFinal == 'yes') {
+                    } else if ($scope.isFinal == 'yes') { //If the new state added is final state, set it is the final state
                         $scope.newState.state = 'Final';
                     }
-                    $scope.fsm.push($scope.newState);
+                    $scope.fsm.push($scope.newState); //adds the new to the finite state machine
 
                     $scope.newState = {};
                     $scope.isFinal = "Is Final State?";
                 }
 
-                $scope.stringTest = function () {
+                $scope.stringTest = function () { //Function to test the user inputted string to the user created finite state machine
                     var currentState = 0;
                     var currentValue;
                     var lastState = 0;
                     var stateType = "Start";
                     var allowedString = false;
 
-                    var stringArray = $scope.testString.toLowerCase().split("");
+                    var stringArray = $scope.testString.toLowerCase().split(""); //Splits the user inputted string into a array
                     var fsm = $scope.fsm;
                     console.log(stringArray);
 
-                    var i = 0;
-                    for (j = 0; j < fsm.length; j++) {
-                        if (i < stringArray.length) {
-                            if (currentState == fsm[j].current && stringArray[i] == fsm[j].value) {
-                                currentState = fsm[j].next;
-                                stateType = fsm[j].state;
-                                i++; 
+                    var i = 0; //String Array index
+                    for (j = 0; j < fsm.length; j++) { //loop through each state of the finite state machine
+                        if (i < stringArray.length) { // If i is less than the lenght of the of string
+                            if (currentState == fsm[j].current && stringArray[i] == fsm[j].value) { //checks if the current state in and the character to test are equal and present
+                                currentState = fsm[j].next; //sets the current state to the next state
+                                stateType = fsm[j].state; //Sets the state type to the nexts states type
+                                i++; //increments the 
                                 if (fsm[j].next <= fsm[j].current) {
-                                    j = 0;
+                                    j--;
                                 }
-                            } 
+                            }
                         } else {
                             j = fsm.length + 1;
                         }
@@ -207,8 +202,11 @@
                     }
                     if (stateType == "Final") {
                         console.log('String Accepted');
+                        $scope.result = "The String " + $scope.testString + " is Accepted";
+
                     } else if (stateType == "Start" || stateType == "Transition") {
                         console.log('String Not Accepted');
+                        $scope.result = "The String " + $scope.testString + " is Not Accepted";
                     }
 
                 }
