@@ -190,23 +190,23 @@
                             if (currentState == fsm[j].current && stringArray[i] == fsm[j].value) { //checks if the current state in and the character to test are equal and present
                                 currentState = fsm[j].next; //sets the current state to the next state
                                 stateType = fsm[j].state; //Sets the state type to the nexts states type
-                                i++; //increments the 
-                                if (fsm[j].next <= fsm[j].current) {
+                                i++; //increments the test string indexer
+                                if (fsm[j].next <= fsm[j].current) { //if the state is going back to itself, keep the fsm index from incrementing
                                     j--;
                                 }
                             }
-                        } else {
-                            j = fsm.length + 1;
+                        } else { //if the string has been completely traversed
+                            j = fsm.length + 1; //sets the fsm incrementer so that the loop will end
                         }
 
                     }
-                    if (stateType == "Final") {
+                    if (stateType == "Final") { //if the final state reached by the string is Final
                         console.log('String Accepted');
-                        $scope.result = "The String " + $scope.testString + " is Accepted";
+                        $scope.result = "The String " + $scope.testString + " is Accepted"; //output that the string is Accepted by the FSM
 
-                    } else if (stateType == "Start" || stateType == "Transition") {
+                    } else if (stateType == "Start" || stateType == "Transition") { //if the final state reached by the string is anything but the Final State
                         console.log('String Not Accepted');
-                        $scope.result = "The String " + $scope.testString + " is Not Accepted";
+                        $scope.result = "The String " + $scope.testString + " is Not Accepted"; //output that the string is not Accepted by the FSM
                     }
 
                 }
